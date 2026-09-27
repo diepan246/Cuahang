@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tiệm trà sữa cá nhân - Trà sữa thơm ngon, topping hấp dẫn.">
+  <title>MilkTea House - Trà Sữa Nhà Làm</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fff8f3;
+      color: #3d2924;
+      line-height: 1.6;
+    }
+
+    /* ================= HEADER ================= */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .navbar {
+      max-width: 1200px;
+      margin: auto;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: 800;
+      color: #b85c38;
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: #e99b72;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 28px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #3d2924;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #c96b45;
+    }
+
+    .cart-button {
+      border: none;
+      background: #b85c38;
+      color: white;
+      padding: 10px 17px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .cart-button:hover {
+      background: #8f4228;
+      transform: translateY(-2px);
+    }
+
+    /* ================= HERO ================= */
+
+    .hero {
+      min-height: 650px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(255, 248, 243, 0.98),
+          rgba(255, 248, 243, 0.72)
+        ),
+        url("https://images.unsplash.com/photo-1558857563-b371033873b8?auto=format&fit=crop&w=1600&q=80")
+        center/cover;
+    }
+
+    .hero-content {
+      width: 1200px;
+      max-width: 90%;
+      padding: 60px 20px;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      max-width: 700px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      color: #4b2e27;
+    }
+
+    .hero-content h1 span {
+      color: #c96b45;
+    }
+
+    .hero-content p {
+      max-width: 570px;
+      font-size: 19px;
+      margin-bottom: 30px;
+      color: #624a43;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn-primary {
+      background: #b85c38;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #8f4228;
+      transform: translateY(-3px);
+    }
+
+    .btn-secondary {
+      border: 2px solid #b85c38;
+      color: #b85c38;
+    }
+
+    .btn-secondary:hover {
+      background: #b85c38;
+      color: white;
+    }
+
+    /* ================= GENERAL ================= */
+
+    section {
+      padding: 80px 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-title h2 {
+      font-size: 38px;
+      color: #4b2e27;
+      margin-bottom: 8px;
+    }
+
+    .section-title p {
+      color: #80665d;
+    }
+
+    /* ================= PRODUCTS ================= */
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(90, 50, 30, 0.08);
+      transition: 0.3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 15px 35px rgba(90, 50, 30, 0.15);
+    }
+
+    .product-image {
+      height: 250px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 20px;
+    }
+
+    .product-info h3 {
+      font-size: 21px;
+      margin-bottom: 7px;
+    }
+
+    .product-info p {
+      color: #80665d;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .product-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .price {
+      color: #b85c38;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .add-cart {
+      border: none;
+      background: #f3d2c3;
+      color: #713b2b;
+      padding: 9px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .add-cart:hover {
+      background: #b85c38;
+      color: white;
+    }
+
+    /* ================= ABOUT ================= */
+
+    .about {
+      background: #f7e5db;
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .about-image {
+      width: 100%;
+      height: 430px;
+      object-fit: cover;
+      border-radius: 25px;
+    }
+
+    .about-text h2 {
+      font-size: 38px;
+      margin-bottom: 20px;
+    }
+
+    .about-text p {
+      color: #695149;
+      margin-bottom: 15px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .feature {
+      background: white;
+      padding: 15px;
+      border-radius: 12px;
+    }
+
+    .feature strong {
+      display: block;
+      color: #b85c38;
+      margin-bottom: 4px;
+    }
+
+    /* ================= PROMOTION ================= */
+
+    .promotion {
+      background: #b85c38;
+      color: white;
+      text-align: center;
+      border-radius: 25px;
+      padding: 50px 25px;
+    }
+
+    .promotion h2 {
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
+
+    .promotion p {
+      margin-bottom: 25px;
+    }
+
+    .promotion .btn {
+      background: white;
+      color: #b85c38;
+    }
+
+    /* ================= CONTACT ================= */
+
+    .contact-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 35px;
+    }
+
+    .contact-info,
+    .contact-form {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+    }
+
+    .contact-info h3,
+    .contact-form h3 {
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    .contact-info p {
+      margin-bottom: 12px;
+      color: #695149;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 13px;
+      margin-bottom: 15px;
+      border: 1px solid #e1d1ca;
+      border-radius: 10px;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .contact-form textarea {
+      height: 120px;
+      resize: vertical;
+    }
+
+    .contact-form button {
+      width: 100%;
+      border: none;
+      background: #b85c38;
+      color: white;
+      padding: 14px;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .contact-form button:hover {
+      background: #8f4228;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      background: #3d2924;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    footer p {
+      color: #d7c1b8;
+      margin-top: 5px;
+    }
+
+    /* ================= CART ================= */
+
+    .cart-panel {
+      position: fixed;
+      top: 0;
+      right: -420px;
+      width: 400px;
+      max-width: 90%;
+      height: 100vh;
+      background: white;
+      z-index: 2000;
+      padding: 25px;
+      box-shadow: -5px 0 25px rgba(0,0,0,0.15);
+      transition: 0.35s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cart-panel.active {
+      right: 0;
+    }
+
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .close-cart {
+      border: none;
+      background: none;
+      font-size: 25px;
+      cursor: pointer;
+    }
+
+    #cart-items {
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 12px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .cart-item strong {
+      display: block;
+    }
+
+    .remove-item {
+      border: none;
+      background: #ffe3da;
+      color: #a54125;
+      padding: 5px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .cart-total {
+      border-top: 2px solid #eee;
+      padding-top: 20px;
+      margin-top: 15px;
+    }
+
+    .cart-total-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .checkout {
+      width: 100%;
+      border: none;
+      padding: 14px;
+      border-radius: 10px;
+      background: #b85c38;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .checkout:hover {
+      background: #8f4228;
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width: 900px) {
+      .products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-content,
+      .contact-content {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 650px) {
+      nav ul {
+        display: none;
+      }
+
+      .navbar {
+        padding: 13px 15px;
+      }
+
+      .logo {
+        font-size: 22px;
+      }
+
+      .hero {
+        min-height: 570px;
+      }
+
+      .hero-content h1 {
+        font-size: 43px;
+      }
+
+      .hero-content p {
+        font-size: 16px;
+      }
+
+      section {
+        padding: 60px 15px;
+      }
+
+      .products {
+        grid-template-columns: 1fr;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title h2,
+      .about-text h2,
+      .promotion h2 {
+        font-size: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="navbar">
+      <a href="#" class="logo">Milk<span>Tea</span> House</a>
+
+      <nav>
+        <ul>
+          <li><a href="#home">Trang chủ</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#about">Về chúng tôi</a></li>
+          <li><a href="#contact">Liên hệ</a></li>
+        </ul>
+      </nav>
+
+      <button class="cart-button" onclick="openCart()">
+        🛒 Giỏ hàng (<span id="cart-count">0</span>)
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>
+        Một ly trà sữa,
+        <span>một chút hạnh phúc.</span>
+      </h1>
+
+      <p>
+        Trà sữa thơm ngon được pha chế từ nguyên liệu chất lượng,
+        topping hấp dẫn và công thức đặc biệt của riêng chúng tôi.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#menu" class="btn btn-primary">Xem menu</a>
+        <a href="#contact" class="btn btn-secondary">Liên hệ đặt hàng</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section id="menu">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Menu yêu thích</h2>
+        <p>Những món bán chạy nhất tại MilkTea House</p>
+      </div>
+
+      <div class="products">
+
+        <div class="product-card">
+          <img
+            class="product-image"
+            src="https://images.unsplash.com/photo-1558857563-b371033873b8?auto=format&fit=crop&w=800&q=80"
+            alt="Trà sữa truyền thống"
+          >
+
+          <div class="product-info">
+            <h3>Trà sữa truyền thống</h3>
+            <p>Vị trà đậm đà kết hợp cùng sữa béo thơm.</p>
+
+            <div class="product-bottom">
+              <span class="price">35.000đ</span>
+              <button
+                class="add-cart"
+                onclick="addToCart('Trà sữa truyền thống', 35000)"
+              >
+                + Thêm
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img
+            class="product-image"
+            src="https://images.unsplash.com/photo-1525385133512-2f3bdd039054?auto=format&fit=crop&w=800&q=80"
+            alt="Trà sữa matcha"
+          >
+
+          <div class="product-info">
+            <h3>Trà sữa Matcha</h3>
+            <p>Matcha thơm nhẹ, vị thanh mát và béo vừa phải.</p>
+
+            <div class="product-bottom">
+              <span class="price">39.000đ</span>
+              <button
+                class="add-cart"
+                onclick="addToCart('Trà sữa Matcha', 39000)"
+              >
+                + Thêm
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img
+            class="product-image"
+            src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=800&q=80"
+            alt="Trà sữa trân châu"
+          >
+
+          <div class="product-info">
+            <h3>Trân châu đường đen</h3>
+            <p>Trân châu dai mềm kết hợp đường đen caramel.</p>
+
+            <div class="product-bottom">
+              <span class="price">42.000đ</span>
+              <button
+                class="add-cart"
+                onclick="addToCart('Trân châu đường đen', 42000)"
+              >
+                + Thêm
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img
+            class="product-image"
+            src="https://images.unsplash.com/photo-1620360289554-55c7f3e0c0a4?auto=format&fit=crop&w=800&q=80"
+            alt="Trà đào"
+          >
+
+          <div class="product-info">
+            <h3>Trà đào cam sả</h3>
+            <p>Thanh mát, thơm mùi đào và sả tự nhiên.</p>
+
+            <div class="product-bottom">
+              <span class="price">32.000đ</span>
+              <button
+                class="add-cart"
+                onclick="addToCart('Trà đào cam sả', 32000)"
+              >
+                + Thêm
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img
+            class="product-image"
+            src="https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?auto=format&fit=crop&w=800&q=80"
+            alt="Chocolate"
+          >
+
+          <div class="product-info">
+            <h3>Chocolate Milk Tea</h3>
+            <p>Chocolate đậm vị dành cho những tín đồ ngọt ngào.</p>
+
+            <div class="product-bottom">
+              <span class="price">40.000đ</span>
+              <button
+                class="add-cart"
+                onclick="addToCart('Chocolate Milk Tea', 40000)"
+              >
+                + Thêm
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img
+            class="product-image"
+            src="https://images.unsplash.com/photo-1563227812-0ea4c22e6cc8?auto=format&fit=crop&w=800&q=80"
+            alt="Trà sữa khoai môn"
+          >
+
+          <div class="product-info">
+            <h3>Trà sữa khoai môn</h3>
+            <p>Khoai môn thơm béo với màu tím cực đẹp mắt.</p>
+
+            <div class="product-bottom">
+              <span class="price">38.000đ</span>
+              <button
+                class="add-cart"
+                onclick="addToCart('Trà sữa khoai môn', 38000)"
+              >
+                + Thêm
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+
+      <div class="about-content">
+
+        <img
+          class="about-image"
+          src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=1000&q=80"
+          alt="MilkTea House"
+        >
+
+        <div class="about-text">
+          <h2>Trà sữa làm bằng cả sự yêu thích ❤️</h2>
+
+          <p>
+            MilkTea House là một tiệm trà sữa cá nhân nhỏ,
+            được tạo ra với mong muốn mang đến những ly trà sữa
+            ngon, sạch và phù hợp với túi tiền.
+          </p>
+
+          <p>
+            Mỗi ly đều được pha chế khi khách đặt hàng để đảm bảo
+            hương vị và chất lượng tốt nhất.
+          </p>
+
+          <div class="features">
+            <div class="feature">
+              <strong>🌱 Nguyên liệu</strong>
+              Chọn lọc kỹ càng
+            </div>
+
+            <div class="feature">
+              <strong>🥤 Pha mới</strong>
+              Làm ngay khi đặt
+            </div>
+
+            <div class="feature">
+              <strong>💰 Giá hợp lý</strong>
+              Phù hợp học sinh, sinh viên
+            </div>
+
+            <div class="feature">
+              <strong>❤️ Tận tâm</strong>
+              Phục vụ bằng cả tâm huyết
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROMOTION -->
+  <section>
+    <div class="container">
+      <div class="promotion">
+        <h2>🎉 Ưu đãi hôm nay</h2>
+
+        <p>
+          Mua từ 2 ly trở lên được giảm ngay 10.000đ!
+        </p>
+
+        <a href="#menu" class="btn">
+          Đặt ngay
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Liên hệ đặt hàng</h2>
+        <p>Gửi thông tin, chúng tôi sẽ liên hệ lại với bạn.</p>
+      </div>
+
+      <div class="contact-content">
+
+        <div class="contact-info">
+          <h3>Thông tin cửa hàng</h3>
+
+          <p>📍 Địa chỉ: 123 Đường Trà Sữa, TP. Hồ Chí Minh</p>
+          <p>📞 Điện thoại: 0901 234 567</p>
+          <p>📧 Email: hello@milkteahouse.vn</p>
+          <p>⏰ Thời gian: 09:00 - 22:00 mỗi ngày</p>
+
+          <p>
+            🚚 Có hỗ trợ giao hàng trong khu vực.
+          </p>
+        </div>
+
+        <form class="contact-form" onsubmit="sendMessage(event)">
+          <h3>Gửi yêu cầu</h3>
+
+          <input
+            type="text"
+            placeholder="Họ và tên"
+            required
+          >
+
+          <input
+            type="tel"
+            placeholder="Số điện thoại"
+            required
+          >
+
+          <textarea
+            placeholder="Bạn muốn đặt món gì?"
+            required
+          ></textarea>
+
+          <button type="submit">
+            Gửi yêu cầu
+          </button>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <strong>MilkTea House</strong>
+    <p>© 2026 MilkTea House. All rights reserved.</p>
+  </footer>
+
+  <!-- CART -->
+  <div class="cart-panel" id="cartPanel">
+
+    <div class="cart-header">
+      <h2>🛒 Giỏ hàng</h2>
+
+      <button
+        class="close-cart"
+        onclick="closeCart()"
+      >
+        ×
+      </button>
+    </div>
+
+    <div id="cart-items">
+      <p>Giỏ hàng đang trống.</p>
+    </div>
+
+    <div class="cart-total">
+      <div class="cart-total-row">
+        <span>Tổng:</span>
+        <span id="cart-total">0đ</span>
+      </div>
+
+      <button class="checkout" onclick="checkout()">
+        Đặt hàng
+      </button>
+    </div>
+
+  </div>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    let cart = [];
+
+    function formatPrice(price) {
+      return price.toLocaleString("vi-VN") + "đ";
+    }
+
+    function addToCart(name, price) {
+      const existingItem = cart.find(item => item.name === name);
+
+      if (existingItem) {
+        existingItem.quantity++;
+      } else {
+        cart.push({
+          name: name,
+          price: price,
+          quantity: 1
+        });
+      }
+
+      updateCart();
+
+      // Mở giỏ hàng sau khi thêm
+      openCart();
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCart();
+    }
+
+    function updateCart() {
+      const cartItems = document.getElementById("cart-items");
+      const cartCount = document.getElementById("cart-count");
+      const cartTotal = document.getElementById("cart-total");
+
+      let totalItems = 0;
+      let totalPrice = 0;
+
+      cart.forEach(item => {
+        totalItems += item.quantity;
+        totalPrice += item.price * item.quantity;
+      });
+
+      cartCount.textContent = totalItems;
+      cartTotal.textContent = formatPrice(totalPrice);
+
+      if (cart.length === 0) {
+        cartItems.innerHTML = "<p>Giỏ hàng đang trống.</p>";
+        return;
+      }
+
+      cartItems.innerHTML = cart.map((item, index) => `
+        <div class="cart-item">
+          <div>
+            <strong>${item.name}</strong>
+            <span>
+              ${item.quantity} × ${formatPrice(item.price)}
+            </span>
+          </div>
+
+          <button
+            class="remove-item"
+            onclick="removeFromCart(${index})"
+          >
+            Xóa
+          </button>
+        </div>
+      `).join("");
+    }
+
+    function openCart() {
+      document
+        .getElementById("cartPanel")
+        .classList.add("active");
+    }
+
+    function closeCart() {
+      document
+        .getElementById("cartPanel")
+        .classList.remove("active");
+    }
+
+    function checkout() {
+      if (cart.length === 0) {
+        alert("Giỏ hàng đang trống!");
+        return;
+      }
+
+      let message = "ĐƠN HÀNG MILKTEA HOUSE\n\n";
+
+      let total = 0;
+
+      cart.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+
+        message +=
+          `${item.name} - ${item.quantity} ly - ${formatPrice(itemTotal)}\n`;
+      });
+
+      message += `\nTỔNG: ${formatPrice(total)}`;
+
+      alert(message + "\n\nCảm ơn bạn đã đặt hàng ❤️");
+    }
+
+    function sendMessage(event) {
+      event.preventDefault();
+
+      alert(
+        "Cảm ơn bạn! Yêu cầu đã được ghi nhận. " +
+        "Chúng tôi sẽ liên hệ với bạn sớm nhất."
+      );
+
+      event.target.reset();
+    }
+  </script>
+
+</body>
+</html>
